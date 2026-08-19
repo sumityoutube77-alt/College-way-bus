@@ -1,86 +1,13 @@
-// ===== DOWNLOADED SONGS PLAYLIST =====
+// ===== SINGLE MIXED PLAYLIST FILE =====
 const playlist = [
     { 
         id: 1, 
-        title: "Chand Se Parda Keejiye", 
-        artist: "Kumar Sanu", 
-        audioFile: "audio/01-chand-se-parda-keejiye.mp3",
-        duration: "4:30",
-        thumb: "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Chand+Se+Parda"
-    },
-    { 
-        id: 2, 
-        title: "Kisi Din Banoongi Main Raja Ki Rani", 
-        artist: "Madhuri Dixit", 
-        audioFile: "audio/02-kisi-din-banoongi-main-raja-ki-rani.mp3",
-        duration: "5:12",
-        thumb: "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Raja+Ki+Rani"
-    },
-    { 
-        id: 3, 
-        title: "Phool Mangu Na Bahar Mangu", 
-        artist: "Raja Songs", 
-        audioFile: "audio/03-phool-mangu-na-bahar-mangu.mp3",
-        duration: "5:45",
-        thumb: "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Phool+Mangu"
-    },
-    { 
-        id: 4, 
-        title: "Tujhe Na Dekhu Toh", 
-        artist: "Kumar Sanu, Alka Yagnik", 
-        audioFile: "audio/04-tujhe-na-dekhu-toh.mp3",
-        duration: "6:02",
-        thumb: "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Tujhe+Na+Dekhu"
-    },
-    { 
-        id: 5, 
-        title: "Dheere Dheere Se Meri Zindagi Mein Aana", 
-        artist: "Aashiqui", 
-        audioFile: "audio/05-dheere-dheere-se.mp3",
-        duration: "5:20",
-        thumb: "https://via.placeholder.com/300x300/1ABC9C/FFFFFF?text=Dheere+Dheere"
-    },
-    { 
-        id: 6, 
-        title: "Ek Tere Hi Chehre Pe Pyar Aaya", 
-        artist: "Anuradha Paudwal, Kumar Sanu", 
-        audioFile: "audio/06-ek-tere-hi-chehre-pe.mp3",
-        duration: "5:15",
-        thumb: "https://via.placeholder.com/300x300/E67E22/FFFFFF?text=Ek+Tere+Hi"
-    },
-    { 
-        id: 7, 
-        title: "Bas Ek Sanam Chahiye Aashiqui Ke Liye", 
-        artist: "Kumar Sanu", 
-        audioFile: "audio/07-bas-ek-sanam-chahiye.mp3",
-        duration: "6:35",
-        thumb: "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Bas+Ek+Sanam"
-    },
-    { 
-        id: 8, 
-        title: "Mera Dil Bhi Kitna Pagal Hai", 
-        artist: "Saajan", 
-        audioFile: "audio/08-mera-dil-bhi-kitna.mp3",
-        duration: "5:48",
-        thumb: "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Mera+Dil+Bhi"
-    },
-    { 
-        id: 9, 
-        title: "Tumhein Apna Banane Ki Kasam", 
-        artist: "Kumar Sanu, Anuradha Paudwal", 
-        audioFile: "audio/09-tumhein-apna-banane.mp3",
-        duration: "6:10",
-        thumb: "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Tumhein+Apna"
-    },
-    { 
-        id: 10, 
-        title: "Tum Dil Ki Dhadkan Mein", 
-        artist: "Dhadkan", 
-        audioFile: "audio/10-tum-dil-ki-dhadkan.mp3",
-        duration: "5:30",
-        thumb: "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Tum+Dil+Ki"
+        title: "The Ultimate Indian Bus Driver Playlist", 
+        artist: "Various Artists • 67 Songs Mix", 
+        audioFile: "audio/The Ultimate Indian Bus Driver Playlist ( Timestamps) ࿐ ࿔ ･ﾟ.mp3",
+        duration: "5:30:00",
+        thumb: "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Bus+Playlist"
     }
-    // ... Add remaining 57 songs in same format
 ];
 
 // ===== STATE =====
@@ -146,12 +73,14 @@ function updatePlayButton() {
 
 // ===== CONTROLS =====
 function nextSong() {
-    currentSongIndex = isShuffle ? Math.floor(Math.random() * playlist.length) : (currentSongIndex + 1) % playlist.length;
+    // Single file playlist - just restart
+    currentSongIndex = 0;
     loadSong(currentSongIndex);
 }
 
 function prevSong() {
-    currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+    // Single file playlist - just restart
+    currentSongIndex = 0;
     loadSong(currentSongIndex);
 }
 
@@ -172,9 +101,15 @@ function setProgress(e) {
 }
 
 function formatTime(seconds) {
-    const mins = Math.floor(seconds / 60);
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    
+    if (hours > 0) {
+        return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    } else {
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
 }
 
 // ===== EVENT LISTENERS =====
@@ -201,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             audioPlayer.currentTime = 0;
             audioPlayer.play();
         } else {
+            // Auto-restart for single file
             nextSong();
         }
     });
@@ -214,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== ONLINE COUNT =====
 function simulateOnlineCount() {
-    const count = 25 + Math.floor(Math.random() * 20);
+    const count = 43 + Math.floor(Math.random() * 15);
     document.getElementById('onlineCount').textContent = count;
     document.getElementById('statOnline').textContent = count;
 }
@@ -237,8 +173,12 @@ updateTime();
 document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
     if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
-    if (e.code === 'ArrowRight') nextSong();
-    if (e.code === 'ArrowLeft') prevSong();
+    if (e.code === 'ArrowRight') {
+        audioPlayer.currentTime += 30; // Skip 30 seconds forward
+    }
+    if (e.code === 'ArrowLeft') {
+        audioPlayer.currentTime -= 30; // Skip 30 seconds backward
+    }
 });
 
-console.log('🚌 College Way — Downloaded Songs Player Loaded');
+console.log('🚌 College Way — Ultimate Bus Driver Playlist Loaded (5.5 Hours Mix)');
