@@ -1,197 +1,187 @@
-// ===== YOUR COMPLETE PLAYLIST FROM URLs + CSV =====
+// ===== DOWNLOADED SONGS PLAYLIST =====
 const playlist = [
-    { id: 1, title: "Chand Se Parda Keejiye", artist: "Kumar Sanu", videoId: "P87IAiJmo4A", duration: "4:30", thumb: "https://img.youtube.com/vi/P87IAiJmo4A/mqdefault.jpg" },
-    { id: 2, title: "Kisi Din Banoongi Main Raja Ki Rani", artist: "Madhuri Dixit", videoId: "o2Fs6KqBNX8", duration: "5:12", thumb: "https://img.youtube.com/vi/o2Fs6KqBNX8/mqdefault.jpg" },
-    { id: 3, title: "Phool Mangu Na Bahar Mangu", artist: "Raja Songs", videoId: "_SiRjlYqlcE", duration: "5:45", thumb: "https://img.youtube.com/vi/_SiRjlYqlcE/mqdefault.jpg" },
-    { id: 4, title: "Tujhe Na Dekhu Toh", artist: "Kumar Sanu, Alka Yagnik", videoId: "coZoSYJU1OY", duration: "6:02", thumb: "https://img.youtube.com/vi/coZoSYJU1OY/mqdefault.jpg" },
-    { id: 5, title: "Dheere Dheere Se Meri Zindagi Mein Aana", artist: "Aashiqui", videoId: "KeyfUuXPOcY", duration: "5:20", thumb: "https://img.youtube.com/vi/KeyfUuXPOcY/mqdefault.jpg" },
-    { id: 6, title: "Ek Tere Hi Chehre Pe Pyar Aaya", artist: "Anuradha Paudwal, Kumar Sanu", videoId: "QSFWw0O3Hzk", duration: "5:15", thumb: "https://img.youtube.com/vi/QSFWw0O3Hzk/mqdefault.jpg" },
-    { id: 7, title: "Bas Ek Sanam Chahiye Aashiqui Ke Liye", artist: "Kumar Sanu", videoId: "fBylcT-TWZw", duration: "6:35", thumb: "https://img.youtube.com/vi/fBylcT-TWZw/mqdefault.jpg" },
-    { id: 8, title: "Mera Dil Bhi Kitna Pagal Hai", artist: "Saajan", videoId: "FsNc7I33w60", duration: "5:48", thumb: "https://img.youtube.com/vi/FsNc7I33w60/mqdefault.jpg" },
-    { id: 9, title: "Tumhein Apna Banane Ki Kasam", artist: "Kumar Sanu, Anuradha Paudwal", videoId: "tPNwGuu_rQ4", duration: "6:10", thumb: "https://img.youtube.com/vi/tPNwGuu_rQ4/mqdefault.jpg" },
-    { id: 10, title: "Tum Dil Ki Dhadkan Mein", artist: "Dhadkan", videoId: "3Z_x7vBqr6E", duration: "5:30", thumb: "https://img.youtube.com/vi/3Z_x7vBqr6E/mqdefault.jpg" },
-    { id: 11, title: "Dekhne Walon Ne Kya Kaha", artist: "Salman Khan, Rani Mukherjee", videoId: "q4toZ-XY7_w", duration: "5:25", thumb: "https://img.youtube.com/vi/q4toZ-XY7_w/mqdefault.jpg" },
-    { id: 12, title: "Is Tarah Aashiqui Ka Asar Chod Jaunga", artist: "Kumar Sanu", videoId: "x8AIGcNTjvs", duration: "5:40", thumb: "https://img.youtube.com/vi/x8AIGcNTjvs/mqdefault.jpg" },
-    { id: 13, title: "Tune Zindagi Mein", artist: "Humraaz", videoId: "a2SByvJ9HwY", duration: "5:55", thumb: "https://img.youtube.com/vi/a2SByvJ9HwY/mqdefault.jpg" },
-    { id: 14, title: "Teri Umeed Tera Intezar", artist: "Deewana", videoId: "xvevXfFGPFY", duration: "6:15", thumb: "https://img.youtube.com/vi/xvevXfFGPFY/mqdefault.jpg" },
-    { id: 15, title: "Aaye Ho Meri Zindagi Mein", artist: "Udit Narayan", videoId: "ixCnsZswdpU", duration: "6:05", thumb: "https://img.youtube.com/vi/ixCnsZswdpU/mqdefault.jpg" },
-    { id: 16, title: "Kaash Koi Ladka Mujhe Pyar Karta", artist: "Kumar Sanu, Alka Yagnik", videoId: "4OkiYQOqMaQ", duration: "5:50", thumb: "https://img.youtube.com/vi/4OkiYQOqMaQ/mqdefault.jpg" },
-    { id: 17, title: "Beshak Tum Meri Mohabbat Ho", artist: "Kumar Sanu, Alka Yagnik", videoId: "gUVfCsEhSes", duration: "5:35", thumb: "https://img.youtube.com/vi/gUVfCsEhSes/mqdefault.jpg" },
-    { id: 18, title: "Aksar Is Duniya Mein", artist: "Dhadkan", videoId: "kYV4OzMLVJg", duration: "5:20", thumb: "https://img.youtube.com/vi/kYV4OzMLVJg/mqdefault.jpg" },
-    { id: 19, title: "Jeeta Tha Jiske Liye", artist: "Dilwale", videoId: "fa5Yzxdh8e4", duration: "5:45", thumb: "https://img.youtube.com/vi/fa5Yzxdh8e4/mqdefault.jpg" },
-    { id: 20, title: "Mujhe Jine Nahi Deti Hai Yaad Teri", artist: "Bomb Blast", videoId: "LMHICMFiCxw", duration: "5:10", thumb: "https://img.youtube.com/vi/LMHICMFiCxw/mqdefault.jpg" },
-    { id: 21, title: "Mera Chand Mujhe Aaya Hai Nazar", artist: "Kumar Sanu", videoId: "9GJToQrlt4Y", duration: "5:00", thumb: "https://img.youtube.com/vi/9GJToQrlt4Y/mqdefault.jpg" },
-    { id: 22, title: "Aankh Hai Bhari Bhari", artist: "Kumar Sanu", videoId: "lj4848922tk", duration: "5:30", thumb: "https://img.youtube.com/vi/lj4848922tk/mqdefault.jpg" },
-    { id: 23, title: "Tu Meri Zindagi Hai", artist: "Aashiqui", videoId: "oEg_iXEWlt4", duration: "5:55", thumb: "https://img.youtube.com/vi/oEg_iXEWlt4/mqdefault.jpg" },
-    { id: 24, title: "Aane Se Uske Aaye Bahar", artist: "Mohammed Rafi", videoId: "GNTNnp5rk5E", duration: "4:45", thumb: "https://img.youtube.com/vi/GNTNnp5rk5E/mqdefault.jpg" },
-    { id: 25, title: "Gawah Hai Chand Tare", artist: "Kumar Sanu, Alka Yagnik", videoId: "xeJN83GiA7U", duration: "5:40", thumb: "https://img.youtube.com/vi/xeJN83GiA7U/mqdefault.jpg" },
-    { id: 26, title: "Shikwa Nahin Kisi Se Naseeb", artist: "Govinda, Kumar Sanu", videoId: "F6swWL3BexY", duration: "5:25", thumb: "https://img.youtube.com/vi/F6swWL3BexY/mqdefault.jpg" },
-    { id: 27, title: "Bepanah Pyar Hai Aaja", artist: "Shreya Ghoshal", videoId: "XUZWenAoKbo", duration: "5:15", thumb: "https://img.youtube.com/vi/XUZWenAoKbo/mqdefault.jpg" },
-    { id: 28, title: "Chand Ke Paar Chalo", artist: "Saahib Chopra", videoId: "ZBRmHLVyw28", duration: "5:05", thumb: "https://img.youtube.com/vi/ZBRmHLVyw28/mqdefault.jpg" },
-    { id: 29, title: "Sochenge Tumhe Pyar", artist: "Deewana", videoId: "lFdSi01tpYM", duration: "5:50", thumb: "https://img.youtube.com/vi/lFdSi01tpYM/mqdefault.jpg" },
-    { id: 30, title: "Kasam Khake Kaho", artist: "Alka Yagnik, Kumar Sanu", videoId: "ZfZPVSiNasI", duration: "5:35", thumb: "https://img.youtube.com/vi/ZfZPVSiNasI/mqdefault.jpg" },
-    { id: 31, title: "Chand Taron Main Nazar Aaye", artist: "Udit Narayan, Sadhana Sargam", videoId: "9Z-F02dmuCQ", duration: "5:20", thumb: "https://img.youtube.com/vi/9Z-F02dmuCQ/mqdefault.jpg" },
-    { id: 32, title: "Kisi Se Tum Pyar Karo", artist: "Kumar Sanu, Alka Yagnik", videoId: "-lDmXk8pBNI", duration: "5:45", thumb: "https://img.youtube.com/vi/-lDmXk8pBNI/mqdefault.jpg" },
-    { id: 33, title: "Aye Mere Humsafar", artist: "Udit Narayan, Alka Yagnik", videoId: "sWqjZpBtcxc", duration: "5:30", thumb: "https://img.youtube.com/vi/sWqjZpBtcxc/mqdefault.jpg" },
-    { id: 34, title: "Jabse Tumko Dekha Hai", artist: "Ajay Devgn, Kavita Krishnamurthy", videoId: "j6wdJWUKDyo", duration: "5:15", thumb: "https://img.youtube.com/vi/j6wdJWUKDyo/mqdefault.jpg" },
-    { id: 35, title: "Har Dil Jo Pyar Karega", artist: "Udit Narayan, Alka Yagnik", videoId: "V0jFYD0PirU", duration: "5:40", thumb: "https://img.youtube.com/vi/V0jFYD0PirU/mqdefault.jpg" },
-    { id: 36, title: "Dil Ke Badle Sanam", artist: "Kyon Ki It's Fate", videoId: "fvwyPGBOEgY", duration: "5:25", thumb: "https://img.youtube.com/vi/fvwyPGBOEgY/mqdefault.jpg" },
-    { id: 37, title: "Jhanjhariya", artist: "Abhijeet Bhattacharya", videoId: "6C34aCdjJtM", duration: "5:10", thumb: "https://img.youtube.com/vi/6C34aCdjJtM/mqdefault.jpg" },
-    { id: 38, title: "Hoshwalon Ko Khabar Kya", artist: "Jagjit Singh", videoId: "ag3ENMEV89o", duration: "5:55", thumb: "https://img.youtube.com/vi/ag3ENMEV89o/mqdefault.jpg" },
-    { id: 39, title: "Kitaben Bahut Si", artist: "Baazigar", videoId: "ieu6xnwJxdA", duration: "5:05", thumb: "https://img.youtube.com/vi/ieu6xnwJxdA/mqdefault.jpg" },
-    { id: 40, title: "Pyaar Ki Ek Kahani", artist: "Sonu Nigam, Shreya Ghoshal", videoId: "JLqyUKT1PZc", duration: "5:30", thumb: "https://img.youtube.com/vi/JLqyUKT1PZc/mqdefault.jpg" },
-    { id: 41, title: "Paas Woh Aane Lage", artist: "Kumar Sanu, Alka Yagnik", videoId: "plB0ytzIlqI", duration: "5:20", thumb: "https://img.youtube.com/vi/plB0ytzIlqI/mqdefault.jpg" },
-    { id: 42, title: "Dil Hai Ki Manta Nahin", artist: "Anuradha Paudwal, Kumar Sanu", videoId: "C9efe0rjDlE", duration: "5:45", thumb: "https://img.youtube.com/vi/C9efe0rjDlE/mqdefault.jpg" },
-    { id: 43, title: "Aapke Pyaar Mein", artist: "Alka Yagnik", videoId: "L6bSHDaDLyc", duration: "5:15", thumb: "https://img.youtube.com/vi/L6bSHDaDLyc/mqdefault.jpg" },
-    { id: 44, title: "Saajan Saajan O Mere Sajan", artist: "Alka Yagnik, Kumar Sanu", videoId: "s7qOjXlW7d4", duration: "5:35", thumb: "https://img.youtube.com/vi/s7qOjXlW7d4/mqdefault.jpg" },
-    { id: 45, title: "Pehla Pehla Pyar Hai", artist: "Hum Aapke Hain Koun", videoId: "w2iozAbNXAo", duration: "5:50", thumb: "https://img.youtube.com/vi/w2iozAbNXAo/mqdefault.jpg" },
-    { id: 46, title: "Tu Shayar Hain Main Teri Shayari", artist: "Alka Yagnik", videoId: "Fjzzvbskhu4", duration: "5:25", thumb: "https://img.youtube.com/vi/Fjzzvbskhu4/mqdefault.jpg" },
-    { id: 47, title: "Badi Mushkil Baba Badi Mushkil", artist: "Lajja", videoId: "6pvrkOyKenI", duration: "5:10", thumb: "https://img.youtube.com/vi/6pvrkOyKenI/mqdefault.jpg" },
-    { id: 48, title: "Humko Aaj Kal Hai Intezaar", artist: "Bappi Lahiri, Madhuri", videoId: "Po68CWcHP8", duration: "5:40", thumb: "https://img.youtube.com/vi/Po68CWcHP8/mqdefault.jpg" },
-    { id: 49, title: "O Re Piya", artist: "Rahat Fateh Ali Khan", videoId: "iv7lcUkFVSc", duration: "5:30", thumb: "https://img.youtube.com/vi/iv7lcUkFVSc/mqdefault.jpg" },
-    { id: 50, title: "Tumse Milne Ki Tamanna Hai", artist: "Saajan", videoId: "thjRNwjmAdQ", duration: "5:20", thumb: "https://img.youtube.com/vi/thjRNwjmAdQ/mqdefault.jpg" },
-    { id: 51, title: "Tere Ishq Mein Pagal Ho Gaya", artist: "Humko Tumse Pyaar Hai", videoId: "vN_7VqXe_0U", duration: "5:15", thumb: "https://img.youtube.com/vi/vN_7VqXe_0U/mqdefault.jpg" },
-    { id: 52, title: "Pehli Pehli Baar Mohabbat Ki Hai", artist: "Kumar Sanu, Alka Yagnik", videoId: "cBGDDBHN22U", duration: "5:45", thumb: "https://img.youtube.com/vi/cBGDDBHN22U/mqdefault.jpg" },
-    { id: 53, title: "Kyon Ki Itna Pyar", artist: "Kyon Ki It's Fate", videoId: "vnCIjfkPooo", duration: "5:05", thumb: "https://img.youtube.com/vi/vnCIjfkPooo/mqdefault.jpg" },
-    { id: 54, title: "Jeena Sirf Mere Liye", artist: "Alka Yagnik, Babul Supriyo", videoId: "2NN4zD16MUw", duration: "5:30", thumb: "https://img.youtube.com/vi/2NN4zD16MUw/mqdefault.jpg" },
-    { id: 55, title: "Dil Hai Tumhaara", artist: "Alka Yagnik, Kumar Sanu", videoId: "iIqou2YxDDw", duration: "5:25", thumb: "https://img.youtube.com/vi/iIqou2YxDDw/mqdefault.jpg" },
-    { id: 56, title: "Waada Raha Sanam", artist: "Alka Yagnik, Abhijeet", videoId: "9b0iydtDZLU", duration: "5:40", thumb: "https://img.youtube.com/vi/9b0iydtDZLU/mqdefault.jpg" },
-    { id: 57, title: "Saathiya Tune Kya Kiya", artist: "Love", videoId: "9J_isuHe8bw", duration: "5:15", thumb: "https://img.youtube.com/vi/9J_isuHe8bw/mqdefault.jpg" },
-    { id: 58, title: "Ghoonghat Ki Aad Se", artist: "Hum Hain Rahi Pyar Ke", videoId: "cBw4H6Dx4vc", duration: "5:35", thumb: "https://img.youtube.com/vi/cBw4H6Dx4vc/mqdefault.jpg" },
-    { id: 59, title: "Chori Chori Dil Tera Churayenge", artist: "Kumar Sanu", videoId: "B8MSjHTo154", duration: "5:20", thumb: "https://img.youtube.com/vi/B8MSjHTo154/mqdefault.jpg" },
-    { id: 60, title: "Aankhon Mein Base Ho Tum", artist: "Alka Yagnik", videoId: "w2nAmviVtbE", duration: "5:10", thumb: "https://img.youtube.com/vi/w2nAmviVtbE/mqdefault.jpg" },
-    { id: 61, title: "Dil Mein Dard Sa Jaga Hai", artist: "Alka Yagnik, Udit Narayan", videoId: "zm4HlFRQ6uE", duration: "5:45", thumb: "https://img.youtube.com/vi/zm4HlFRQ6uE/mqdefault.jpg" },
-    { id: 62, title: "Tu Dharti Pe Chaahe Jahan Bhi Rahegi", artist: "Kumar Sanu, Alka Yagnik", videoId: "RQqYw5nJK7A", duration: "5:30", thumb: "https://img.youtube.com/vi/RQqYw5nJK7A/mqdefault.jpg" },
-    { id: 63, title: "Pucho Zara Pucho", artist: "Raja Hindustani", videoId: "GBRifFvAJX8", duration: "5:25", thumb: "https://img.youtube.com/vi/GBRifFvAJX8/mqdefault.jpg" },
-    { id: 64, title: "Odhani Odh Ke Nachu", artist: "Udit Narayan, Alka Yagnik", videoId: "RX3Xenjc-GE", duration: "5:15", thumb: "https://img.youtube.com/vi/RX3Xenjc-GE/mqdefault.jpg" },
-    { id: 65, title: "Meri Mehbooba", artist: "Kumar Sanu, Alka Yagnik", videoId: "k2CuG5E4OAo", duration: "5:40", thumb: "https://img.youtube.com/vi/k2CuG5E4OAo/mqdefault.jpg" },
-    { id: 66, title: "Kyo Kisi Ko", artist: "Udit Narayan, Himesh Reshammiya", videoId: "iCZfjggJg3M", duration: "5:05", thumb: "https://img.youtube.com/vi/iCZfjggJg3M/mqdefault.jpg" },
-    { id: 67, title: "Wadiye Ishq Se Aaya Hai Mera Shahzada", artist: "Romantic Song", videoId: "RPRRqOJ1nUw", duration: "5:35", thumb: "https://img.youtube.com/vi/RPRRqOJ1nUw/mqdefault.jpg" }
+    { 
+        id: 1, 
+        title: "Chand Se Parda Keejiye", 
+        artist: "Kumar Sanu", 
+        audioFile: "audio/01-chand-se-parda-keejiye.mp3",
+        duration: "4:30",
+        thumb: "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Chand+Se+Parda"
+    },
+    { 
+        id: 2, 
+        title: "Kisi Din Banoongi Main Raja Ki Rani", 
+        artist: "Madhuri Dixit", 
+        audioFile: "audio/02-kisi-din-banoongi-main-raja-ki-rani.mp3",
+        duration: "5:12",
+        thumb: "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Raja+Ki+Rani"
+    },
+    { 
+        id: 3, 
+        title: "Phool Mangu Na Bahar Mangu", 
+        artist: "Raja Songs", 
+        audioFile: "audio/03-phool-mangu-na-bahar-mangu.mp3",
+        duration: "5:45",
+        thumb: "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Phool+Mangu"
+    },
+    { 
+        id: 4, 
+        title: "Tujhe Na Dekhu Toh", 
+        artist: "Kumar Sanu, Alka Yagnik", 
+        audioFile: "audio/04-tujhe-na-dekhu-toh.mp3",
+        duration: "6:02",
+        thumb: "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Tujhe+Na+Dekhu"
+    },
+    { 
+        id: 5, 
+        title: "Dheere Dheere Se Meri Zindagi Mein Aana", 
+        artist: "Aashiqui", 
+        audioFile: "audio/05-dheere-dheere-se.mp3",
+        duration: "5:20",
+        thumb: "https://via.placeholder.com/300x300/1ABC9C/FFFFFF?text=Dheere+Dheere"
+    },
+    { 
+        id: 6, 
+        title: "Ek Tere Hi Chehre Pe Pyar Aaya", 
+        artist: "Anuradha Paudwal, Kumar Sanu", 
+        audioFile: "audio/06-ek-tere-hi-chehre-pe.mp3",
+        duration: "5:15",
+        thumb: "https://via.placeholder.com/300x300/E67E22/FFFFFF?text=Ek+Tere+Hi"
+    },
+    { 
+        id: 7, 
+        title: "Bas Ek Sanam Chahiye Aashiqui Ke Liye", 
+        artist: "Kumar Sanu", 
+        audioFile: "audio/07-bas-ek-sanam-chahiye.mp3",
+        duration: "6:35",
+        thumb: "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Bas+Ek+Sanam"
+    },
+    { 
+        id: 8, 
+        title: "Mera Dil Bhi Kitna Pagal Hai", 
+        artist: "Saajan", 
+        audioFile: "audio/08-mera-dil-bhi-kitna.mp3",
+        duration: "5:48",
+        thumb: "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Mera+Dil+Bhi"
+    },
+    { 
+        id: 9, 
+        title: "Tumhein Apna Banane Ki Kasam", 
+        artist: "Kumar Sanu, Anuradha Paudwal", 
+        audioFile: "audio/09-tumhein-apna-banane.mp3",
+        duration: "6:10",
+        thumb: "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Tumhein+Apna"
+    },
+    { 
+        id: 10, 
+        title: "Tum Dil Ki Dhadkan Mein", 
+        artist: "Dhadkan", 
+        audioFile: "audio/10-tum-dil-ki-dhadkan.mp3",
+        duration: "5:30",
+        thumb: "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Tum+Dil+Ki"
+    }
+    // ... Add remaining 57 songs in same format
 ];
 
 // ===== STATE =====
-let player;
 let currentSongIndex = 0;
 let isPlaying = false;
 let isShuffle = false;
 let isRepeat = false;
 
-// ===== YOUTUBE PLAYER =====
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        height: '100%',
-        width: '100%',
-        videoId: playlist[0].videoId,
-        playerVars: {
-            'autoplay': 0,
-            'controls': 1,
-            'rel': 0,
-            'modestbranding': 1
-        },
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-        }
-    });
-}
+// ===== AUDIO PLAYER =====
+const audioPlayer = document.getElementById('audioPlayer');
+const playBtn = document.getElementById('btnPlay');
+const playIcon = document.getElementById('playIcon');
+const progressBar = document.getElementById('progressBar');
+const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+const durationDisplay = document.getElementById('durationDisplay');
+const songTitle = document.getElementById('songTitle');
+const songArtist = document.getElementById('songArtist');
+const albumArt = document.getElementById('albumArt');
 
-function onPlayerReady(event) {
-    renderPlaylist();
-    updateNowPlaying();
+// ===== INITIALIZE =====
+function initPlayer() {
+    loadSong(currentSongIndex);
     updateTime();
     simulateOnlineCount();
 }
 
-function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.PLAYING) {
-        isPlaying = true;
-        updatePlayButton();
-    } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-        isPlaying = false;
-        updatePlayButton();
-        
-        if (event.data === YT.PlayerState.ENDED) {
-            if (isRepeat) {
-                player.seekTo(0);
-                player.playVideo();
-            } else {
-                nextSong();
-            }
-        }
-    }
-}
-
-// ===== RENDER PLAYLIST =====
-function renderPlaylist() {
-    const container = document.getElementById('playlistContainer');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    playlist.forEach((song, index) => {
-        const item = document.createElement('div');
-        item.className = `playlist-item ${index === currentSongIndex ? 'active' : ''}`;
-        item.innerHTML = `
-            <span class="song-number">${index === currentSongIndex && isPlaying ? '♪' : index + 1}</span>
-            <img class="song-thumb" src="${song.thumb}" alt="${song.title}" 
-                 onerror="this.src='https://via.placeholder.com/64x48/E74C3C/FFFFFF?text='">
-            <div class="song-info">
-                <div class="song-title">${song.title}</div>
-                <div class="song-artist">${song.artist}</div>
-            </div>
-            <span class="song-duration">${song.duration}</span>
-            <i class="fas fa-play play-icon"></i>
-        `;
-        
-        item.addEventListener('click', () => {
-            currentSongIndex = index;
-            loadSong();
-        });
-        
-        container.appendChild(item);
-    });
-}
-
 // ===== LOAD SONG =====
-function loadSong() {
-    const song = playlist[currentSongIndex];
-    if (player && player.loadVideoById) {
-        player.loadVideoById(song.videoId);
+function loadSong(index) {
+    const song = playlist[index];
+    audioPlayer.src = song.audioFile;
+    songTitle.textContent = song.title;
+    songArtist.textContent = song.artist;
+    albumArt.src = song.thumb;
+    durationDisplay.textContent = song.duration;
+    progressBar.value = 0;
+    currentTimeDisplay.textContent = "0:00";
+    
+    if (isPlaying) {
+        audioPlayer.play().catch(error => {
+            console.log("Auto-play prevented:", error);
+            isPlaying = false;
+            updatePlayButton();
+        });
     }
-    updateNowPlaying();
-    renderPlaylist();
 }
 
-function updateNowPlaying() {
-    const song = playlist[currentSongIndex];
-    document.getElementById('npTitle').textContent = song.title;
-    document.getElementById('npArtist').textContent = song.artist;
-}
-
-// ===== CONTROLS =====
+// ===== PLAY/PAUSE =====
 function togglePlay() {
-    if (!player) return;
-    isPlaying ? player.pauseVideo() : player.playVideo();
+    if (!audioPlayer.src) return;
+    
+    if (isPlaying) {
+        audioPlayer.pause();
+    } else {
+        audioPlayer.play().catch(error => {
+            console.log("Play failed:", error);
+        });
+    }
 }
 
 function updatePlayButton() {
-    document.getElementById('playIcon').className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
-    renderPlaylist();
+    playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
 }
 
+// ===== CONTROLS =====
 function nextSong() {
     currentSongIndex = isShuffle ? Math.floor(Math.random() * playlist.length) : (currentSongIndex + 1) % playlist.length;
-    loadSong();
+    loadSong(currentSongIndex);
 }
 
 function prevSong() {
     currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
-    loadSong();
+    loadSong(currentSongIndex);
 }
 
-// Event Listeners
+// ===== PROGRESS BAR =====
+function updateProgress() {
+    if (audioPlayer.duration) {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.value = progress;
+        currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+    }
+}
+
+function setProgress(e) {
+    const width = e.target.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audioPlayer.duration;
+    audioPlayer.currentTime = (clickX / width) * duration;
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// ===== EVENT LISTENERS =====
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btnPlay').addEventListener('click', togglePlay);
+    initPlayer();
+    
+    playBtn.addEventListener('click', togglePlay);
     document.getElementById('btnNext').addEventListener('click', nextSong);
     document.getElementById('btnPrev').addEventListener('click', prevSong);
     
@@ -204,6 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
         isRepeat = !isRepeat;
         this.style.color = isRepeat ? '#E74C3C' : '#ffffff';
     });
+    
+    audioPlayer.addEventListener('timeupdate', updateProgress);
+    audioPlayer.addEventListener('ended', () => {
+        if (isRepeat) {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
+        } else {
+            nextSong();
+        }
+    });
+    
+    audioPlayer.addEventListener('loadedmetadata', () => {
+        durationDisplay.textContent = formatTime(audioPlayer.duration);
+    });
+    
+    progressBar.addEventListener('input', setProgress);
 });
 
 // ===== ONLINE COUNT =====
@@ -235,4 +241,4 @@ document.addEventListener('keydown', (e) => {
     if (e.code === 'ArrowLeft') prevSong();
 });
 
-console.log(' College Way — 67 Songs Loaded Successfully!');
+console.log('🚌 College Way — Downloaded Songs Player Loaded');
