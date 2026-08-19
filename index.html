@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚌 College Way — Bus Playlist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -13,11 +13,11 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-left">
-            <span class="current-time" id="currentTime">9:43 AM</span>
+            <span class="current-time" id="currentTime">10:10 PM</span>
         </div>
         <div class="top-center">
             <span class="online-dot"></span>
-            <span class="online-text"><span id="onlineCount">0</span> listening now</span>
+            <span class="online-text"><span id="onlineCount">25</span> listening now</span>
         </div>
         <div class="top-right">
             <a href="https://youtube.com" target="_blank" class="yt-link">
@@ -26,19 +26,10 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="main-title">🚌 College Way</h1>
-            <p class="subtitle">Bus Playlist • Hindi Songs • Non-Stop Music</p>
-        </div>
-    </section>
-
     <!-- Dashboard -->
     <section class="dashboard">
         <div class="dashboard-header">
-            <h2>🎧 Today's Bus Playlist</h2>
+            <h2 class="gradient-text">🎧 Today's Bus Playlist</h2>
             <p>Real YouTube • No Ads (Brave Browser) • Live Updates</p>
         </div>
 
@@ -47,21 +38,21 @@
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-users"></i></div>
                 <div class="stat-info">
-                    <span class="stat-number" id="statOnline">0</span>
+                    <span class="stat-number" id="statOnline">25</span>
                     <span class="stat-label">Listening Now</span>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-music"></i></div>
                 <div class="stat-info">
-                    <span class="stat-number">25</span>
+                    <span class="stat-number" id="statTotal">67</span>
                     <span class="stat-label">Total Songs</span>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-clock"></i></div>
                 <div class="stat-info">
-                    <span class="stat-number">2h 15m</span>
+                    <span class="stat-number">5h 30m</span>
                     <span class="stat-label">Duration</span>
                 </div>
             </div>
@@ -74,40 +65,33 @@
             </div>
         </div>
 
-        <!-- YouTube Player (First Video) -->
+        <!-- YouTube Player -->
         <div class="player-section">
             <div class="player-container">
                 <div id="youtube-player"></div>
             </div>
         </div>
 
-        <!-- Playlist Link -->
-        <div class="playlist-info">
-            <h3>📋 Full Playlist</h3>
-            <p style="color: var(--text-secondary); font-size: 14px; margin: 15px 0;">
-                Apni puri playlist YouTube par dekho
-            </p>
-            <a href="https://m.youtube.com/playlist?list=PLPHrUvV7-X3lSCQXydccAnexseC45AmQk" 
-               target="_blank" 
-               class="playlist-link">
-                <i class="fab fa-youtube"></i> Open Full Playlist
-            </a>
+        <!-- Playlist -->
+        <div class="playlist-section">
+            <h3> Bus Journey Playlist</h3>
+            <div class="playlist-container" id="playlistContainer"></div>
         </div>
 
-        <!-- Now Playing Info -->
+        <!-- Now Playing -->
         <div class="now-playing-info">
             <div class="np-header">
                 <i class="fas fa-music"></i>
                 <span>Now Playing</span>
             </div>
             <div class="np-content">
-                <h4 id="npTitle">Loading...</h4>
+                <h4 id="npTitle">Select a song</h4>
                 <p id="npArtist">-</p>
             </div>
         </div>
     </section>
 
-    <!-- Controls -->
+    <!-- Controls Bar -->
     <div class="controls-bar">
         <button class="ctrl-btn" id="btnPrev" title="Previous">
             <i class="fas fa-step-backward"></i>
