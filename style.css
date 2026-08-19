@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+/* ===== RESET & BASE ===== */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -139,7 +139,6 @@ body {
 }
 
 .main-title {
-    font-family: 'Tiro Devanagari Hindi', serif;
     font-size: clamp(48px, 8vw, 96px);
     font-weight: 700;
     color: var(--text-primary);
@@ -262,8 +261,7 @@ body {
     border: 1px solid var(--card-border);
 }
 
-.player-container iframe,
-.player-container div {
+.player-container iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -272,97 +270,49 @@ body {
     border-radius: 20px;
 }
 
-/* Playlist Section */
-.playlist-section {
-    margin-bottom: 40px;
-}
-
-.playlist-section h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--text-primary);
-}
-
-.playlist-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.playlist-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 20px;
+/* Playlist Info Section */
+.playlist-info {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 12px;
-    cursor: pointer;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.playlist-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.playlist-info p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.playlist-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #FF0000, #cc0000);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.playlist-item:hover {
-    background: rgba(231, 76, 60, 0.15);
-    border-color: var(--primary);
-    transform: translateX(4px);
+.playlist-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
 }
 
-.playlist-item.active {
-    background: rgba(231, 76, 60, 0.25);
-    border-color: var(--primary);
-}
-
-.playlist-item .song-number {
-    font-size: 14px;
-    color: var(--text-secondary);
-    width: 24px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.playlist-item .song-thumb {
-    width: 60px;
-    height: 45px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.playlist-item .song-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.playlist-item .song-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.playlist-item .song-artist {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-}
-
-.playlist-item .song-duration {
-    font-size: 13px;
-    color: var(--text-secondary);
-    font-variant-numeric: tabular-nums;
-}
-
-.playlist-item .play-icon {
-    font-size: 16px;
-    color: var(--primary);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.playlist-item:hover .play-icon {
-    opacity: 1;
+.playlist-link .fa-youtube {
+    font-size: 18px;
 }
 
 /* Now Playing Info */
@@ -371,6 +321,7 @@ body {
     border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 20px;
+    margin-top: 30px;
     backdrop-filter: blur(10px);
 }
 
@@ -394,15 +345,12 @@ body {
     color: var(--text-secondary);
 }
 
-/* ===== CONTROLS BAR ===== */
+/* Controls Bar */
 .controls-bar {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 12px;
     background: rgba(26, 26, 46, 0.95);
     backdrop-filter: blur(20px);
     padding: 16px 24px;
@@ -410,39 +358,7 @@ body {
     border: 1px solid var(--card-border);
     box-shadow: 0 10px 50px rgba(0,0,0,0.5);
     z-index: 999;
-}
-
-.ctrl-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.1);
-    color: var(--text-primary);
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.ctrl-btn:hover {
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.05);
-}
-
-.play-btn {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    font-size: 20px;
-}
-
-.play-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+    min-width: 200px;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -472,38 +388,39 @@ body {
         padding: 16px;
     }
 
+    .hero {
+        height: 50vh;
+        min-height: 300px;
+    }
+
     .controls-bar {
         bottom: 10px;
         padding: 12px 16px;
-        gap: 8px;
-        border-radius: 40px;
+        min-width: 150px;
     }
 
-    .ctrl-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 14px;
-    }
-
-    .play-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
+    .controls-bar div {
+        font-size: 11px;
     }
 }
 
 @media (max-width: 480px) {
-    .playlist-item .song-thumb {
-        width: 50px;
-        height: 38px;
+    .stat-number {
+        font-size: 18px;
     }
 
-    .playlist-item .song-title {
-        font-size: 13px;
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 
-    .playlist-item .song-duration {
-        display: none;
+    .dashboard-header h2 {
+        font-size: 22px;
+    }
+
+    .playlist-info h3 {
+        font-size: 16px;
     }
 }
 
@@ -523,4 +440,35 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+}
+
+.rounded-lg {
+    border-radius: 16px;
+}
+
+/* ===== LOADING ANIMATION ===== */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s ease-in-out infinite;
 }
