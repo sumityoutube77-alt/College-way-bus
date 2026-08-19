@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚌 College Way — Bus Playlist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -26,11 +26,20 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="main-title">🚌 College Way</h1>
+            <p class="subtitle">Bus Playlist • Downloaded Songs • Offline Music</p>
+        </div>
+    </section>
+
     <!-- Dashboard -->
     <section class="dashboard">
         <div class="dashboard-header">
-            <h2 class="gradient-text">🎧 Today's Bus Playlist</h2>
-            <p>Real YouTube • No Ads (Brave Browser) • Live Updates</p>
+            <h2>Now Playing</h2>
+            <p>Your Downloaded Music Collection</p>
         </div>
 
         <!-- Stats -->
@@ -45,7 +54,7 @@
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-music"></i></div>
                 <div class="stat-info">
-                    <span class="stat-number" id="statTotal">67</span>
+                    <span class="stat-number">67</span>
                     <span class="stat-label">Total Songs</span>
                 </div>
             </div>
@@ -59,36 +68,37 @@
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-heart"></i></div>
                 <div class="stat-info">
-                    <span class="stat-number">847</span>
+                    <span class="stat-number">1.2K</span>
                     <span class="stat-label">Likes</span>
                 </div>
             </div>
         </div>
 
-        <!-- YouTube Player -->
+        <!-- Audio Player Section -->
         <div class="player-section">
-            <div class="player-container">
-                <div id="youtube-player"></div>
+            <div class="now-playing-card">
+                <div class="album-art">
+                    <img id="albumArt" src="https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Music" alt="Album Art">
+                </div>
+                <div class="song-details">
+                    <h3 id="songTitle">Chand Se Parda Keejiye</h3>
+                    <p id="songArtist">Kumar Sanu</p>
+                    <div class="progress-container">
+                        <input type="range" id="progressBar" min="0" max="100" value="0" class="progress-bar">
+                        <div class="time-display">
+                            <span id="currentTimeDisplay">0:00</span>
+                            <span id="durationDisplay">4:30</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Playlist -->
-        <div class="playlist-section">
-            <h3> Bus Journey Playlist</h3>
-            <div class="playlist-container" id="playlistContainer"></div>
-        </div>
-
-        <!-- Now Playing -->
-        <div class="now-playing-info">
-            <div class="np-header">
-                <i class="fas fa-music"></i>
-                <span>Now Playing</span>
-            </div>
-            <div class="np-content">
-                <h4 id="npTitle">Select a song</h4>
-                <p id="npArtist">-</p>
-            </div>
-        </div>
+        <!-- Hidden Audio Element -->
+        <audio id="audioPlayer" preload="auto">
+            <source src="audio/01-chand-se-parda-keejiye.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </section>
 
     <!-- Controls Bar -->
@@ -111,6 +121,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
