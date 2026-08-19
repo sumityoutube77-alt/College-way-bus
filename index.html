@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> College Way — Bus Playlist</title>
+    <title>🚌 College Way — Bus Playlist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
     <section class="dashboard">
         <div class="dashboard-header">
             <h2>🎧 Today's Bus Playlist</h2>
-            <p>Real YouTube • No Ads (Brave Browser) • Live Updates</p>
+            <p>Real YouTube Playlist • No Ads (Brave Browser) • Live Updates</p>
         </div>
 
         <!-- Stats -->
@@ -74,19 +74,31 @@
             </div>
         </div>
 
-        <!-- YouTube Player -->
+        <!-- YouTube Playlist Embed -->
         <div class="player-section">
             <div class="player-container">
-                <div id="youtube-player"></div>
+                <iframe 
+                    id="youtube-player"
+                    src="https://www.youtube.com/embed/videoseries?list=PLPHrUvV7-X3lSCQXydccAnexseC45AmQk"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
 
-        <!-- Playlist -->
-        <div class="playlist-section">
+        <!-- Playlist Info -->
+        <div class="playlist-info">
             <h3>📋 Bus Journey Playlist</h3>
-            <div class="playlist-container" id="playlistContainer">
-                <!-- Songs will be loaded here -->
-            </div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin-top: 10px;">
+                👆 Upar player mein playlist chal rahi hai. 
+                <br>Use Brave Browser for ad-free experience! 🎧
+            </p>
+            <a href="https://m.youtube.com/playlist?list=PLPHrUvV7-X3lSCQXydccAnexseC45AmQk" 
+               target="_blank" 
+               class="playlist-link">
+                <i class="fab fa-youtube"></i> Open Full Playlist on YouTube
+            </a>
         </div>
 
         <!-- Now Playing Info -->
@@ -96,32 +108,19 @@
                 <span>Now Playing</span>
             </div>
             <div class="np-content">
-                <h4 id="npTitle">Select a song to play</h4>
-                <p id="npArtist">-</p>
+                <h4 id="npTitle">YouTube Playlist Active</h4>
+                <p id="npArtist">Select any song from above player</p>
             </div>
         </div>
     </section>
 
-    <!-- Controls -->
+    <!-- Controls Info -->
     <div class="controls-bar">
-        <button class="ctrl-btn" id="btnPrev" title="Previous">
-            <i class="fas fa-step-backward"></i>
-        </button>
-        <button class="ctrl-btn play-btn" id="btnPlay" title="Play/Pause">
-            <i class="fas fa-play" id="playIcon"></i>
-        </button>
-        <button class="ctrl-btn" id="btnNext" title="Next">
-            <i class="fas fa-step-forward"></i>
-        </button>
-        <button class="ctrl-btn" id="btnShuffle" title="Shuffle">
-            <i class="fas fa-random"></i>
-        </button>
-        <button class="ctrl-btn" id="btnRepeat" title="Repeat">
-            <i class="fas fa-redo"></i>
-        </button>
+        <div style="color: var(--text-secondary); font-size: 12px; text-align: center;">
+            <i class="fas fa-info-circle"></i> Use YouTube player controls above
+        </div>
     </div>
 
     <script src="script.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
