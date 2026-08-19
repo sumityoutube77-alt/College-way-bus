@@ -39,7 +39,7 @@
     <section class="dashboard">
         <div class="dashboard-header">
             <h2>🎧 Today's Bus Playlist</h2>
-            <p>Real YouTube Playlist • No Ads (Brave Browser) • Live Updates</p>
+            <p>Real YouTube • No Ads (Brave Browser) • Live Updates</p>
         </div>
 
         <!-- Stats -->
@@ -74,30 +74,23 @@
             </div>
         </div>
 
-        <!-- YouTube Playlist Embed -->
+        <!-- YouTube Player (First Video) -->
         <div class="player-section">
             <div class="player-container">
-                <iframe 
-                    id="youtube-player"
-                    src="https://www.youtube.com/embed/videoseries?list=PLPHrUvV7-X3lSCQXydccAnexseC45AmQk"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+                <div id="youtube-player"></div>
             </div>
         </div>
 
-        <!-- Playlist Info -->
+        <!-- Playlist Link -->
         <div class="playlist-info">
-            <h3>📋 Bus Journey Playlist</h3>
-            <p style="color: var(--text-secondary); font-size: 14px; margin-top: 10px;">
-                👆 Upar player mein playlist chal rahi hai. 
-                <br>Use Brave Browser for ad-free experience! 🎧
+            <h3>📋 Full Playlist</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 15px 0;">
+                Apni puri playlist YouTube par dekho
             </p>
             <a href="https://m.youtube.com/playlist?list=PLPHrUvV7-X3lSCQXydccAnexseC45AmQk" 
                target="_blank" 
                class="playlist-link">
-                <i class="fab fa-youtube"></i> Open Full Playlist on YouTube
+                <i class="fab fa-youtube"></i> Open Full Playlist
             </a>
         </div>
 
@@ -108,19 +101,32 @@
                 <span>Now Playing</span>
             </div>
             <div class="np-content">
-                <h4 id="npTitle">YouTube Playlist Active</h4>
-                <p id="npArtist">Select any song from above player</p>
+                <h4 id="npTitle">Loading...</h4>
+                <p id="npArtist">-</p>
             </div>
         </div>
     </section>
 
-    <!-- Controls Info -->
+    <!-- Controls -->
     <div class="controls-bar">
-        <div style="color: var(--text-secondary); font-size: 12px; text-align: center;">
-            <i class="fas fa-info-circle"></i> Use YouTube player controls above
-        </div>
+        <button class="ctrl-btn" id="btnPrev" title="Previous">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button class="ctrl-btn play-btn" id="btnPlay" title="Play/Pause">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+        <button class="ctrl-btn" id="btnNext" title="Next">
+            <i class="fas fa-step-forward"></i>
+        </button>
+        <button class="ctrl-btn" id="btnShuffle" title="Shuffle">
+            <i class="fas fa-random"></i>
+        </button>
+        <button class="ctrl-btn" id="btnRepeat" title="Repeat">
+            <i class="fas fa-redo"></i>
+        </button>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
