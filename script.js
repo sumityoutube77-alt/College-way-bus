@@ -16,10 +16,11 @@ function initPlayer() {
     updateTime();
     simulateOnlineCount();
     
-    // Load audio metadata
+    // Load audio
     audioPlayer.load();
     
-    console.log('🚌 Bus Wali Playlist - Player Initialized');
+    console.log(' Bus Wali Playlist - Player Initialized');
+    console.log('🎵 Audio source:', audioPlayer.src);
 }
 
 // ===== PLAY/PAUSE =====
@@ -59,7 +60,7 @@ function nextSong() {
 
 function prevSong() {
     audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 30, 0);
-    console.log('⏪ Backward 30s');
+    console.log(' Backward 30s');
 }
 
 // ===== PROGRESS BAR =====
@@ -106,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnShuffle').addEventListener('click', function() {
         isShuffle = !isShuffle;
         this.style.color = isShuffle ? '#E74C3C' : '#ffffff';
-        console.log(' Shuffle:', isShuffle);
+        console.log('🔀 Shuffle:', isShuffle);
     });
     
     document.getElementById('btnRepeat').addEventListener('click', function() {
@@ -129,8 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     audioPlayer.addEventListener('loadedmetadata', () => {
-        console.log('📀 Audio loaded - Duration:', formatTime(audioPlayer.duration));
+        console.log(' Audio loaded - Duration:', formatTime(audioPlayer.duration));
         durationDisplay.textContent = formatTime(audioPlayer.duration);
+    });
+    
+    audioPlayer.addEventListener('canplay', () => {
+        console.log('✅ Audio can play now');
     });
     
     audioPlayer.addEventListener('ended', () => {
@@ -146,7 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     audioPlayer.addEventListener('error', (e) => {
         console.error('❌ Audio Error:', e);
-        alert('Audio file load nahi ho rahi! File name ya path check karo.');
+        console.error('Error code:', audioPlayer.error?.code);
+        console.error('Error message:', audioPlayer.error?.message);
     });
     
     progressBar.addEventListener('input', setProgress);
@@ -156,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== ONLINE COUNT =====
 function simulateOnlineCount() {
-    const count = 61 + Math.floor(Math.random() * 15);
+    const count = 75 + Math.floor(Math.random() * 15);
     document.getElementById('onlineCount').textContent = count;
     document.getElementById('statOnline').textContent = count;
 }
