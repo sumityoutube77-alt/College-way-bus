@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚌 College Way — Bus Playlist</title>
+    <title>🚌 Bus Wali Playlist</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -30,8 +30,8 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="main-title">🚌 College Way</h1>
-            <p class="subtitle">Ultimate Indian Bus Driver Playlist • Non-Stop Music</p>
+            <h1 class="main-title">🚌 Bus Wali Playlist</h1>
+            <p class="subtitle">Ultimate Indian Bus Driver Playlist • 67 Songs • Non-Stop</p>
         </div>
     </section>
 
@@ -78,7 +78,7 @@
         <div class="player-section">
             <div class="now-playing-card">
                 <div class="album-art">
-                    <img id="albumArt" src="bus-playlist.jpg" alt="Bus Playlist">
+                    <img id="albumArt" src="audio/bus-cover.jpg" alt="Bus Wali Playlist">
                 </div>
                 <div class="song-details">
                     <h3 id="songTitle">The Ultimate Indian Bus Driver Playlist</h3>
@@ -94,9 +94,15 @@
             </div>
         </div>
 
+        <!-- Song List -->
+        <div class="playlist-section">
+            <h3>📋 Bus Journey Playlist (67 Songs)</h3>
+            <div class="playlist-container" id="playlistContainer"></div>
+        </div>
+
         <!-- Hidden Audio Element -->
         <audio id="audioPlayer" preload="auto">
-            <source src="audio/The Ultimate Indian Bus Driver Playlist ( Timestamps) ࿐ ࿔ ･ﾟ.mp3" type="audio/mpeg">
+            <source src="audio/The Ultimate Indian Bus Driver Playlist ( Timestamps) ࿐  ･ﾟ.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </section>
