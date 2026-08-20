@@ -1,6 +1,7 @@
 // ===== STATE =====
 let isPlaying = false;
 let isRepeat = false;
+let isShuffle = false;
 
 // ===== AUDIO PLAYER =====
 const audioPlayer = document.getElementById('audioPlayer');
@@ -15,26 +16,28 @@ function initPlayer() {
     updateTime();
     simulateOnlineCount();
     
-    // Load audio source
-    const source = audioPlayer.querySelector('source');
-    if (source) {
-        audioPlayer.load();
-    }
+    // Load audio metadata
+    audioPlayer.load();
+    
+    console.log('🚌 Bus Wali Playlist - Player Initialized');
 }
 
-// ===== PLAY/PAUSE (FIXED) =====
+// ===== PLAY/PAUSE =====
 function togglePlay() {
     if (audioPlayer.paused) {
         audioPlayer.play().then(() => {
             isPlaying = true;
             updatePlayButton();
+            console.log('▶️ Playing...');
         }).catch(error => {
-            console.error("Play failed:", error);
+            console.error('❌ Play failed:', error);
+            alert('Audio load hone mein problem ho rahi hai. Page refresh karo!');
         });
     } else {
         audioPlayer.pause();
         isPlaying = false;
         updatePlayButton();
+        console.log('⏸️ Paused');
     }
 }
 
@@ -48,11 +51,15 @@ function updatePlayButton() {
 
 // ===== CONTROLS (Skip 30 seconds) =====
 function nextSong() {
-    audioPlayer.currentTime += 30;
+    if (audioPlayer.duration) {
+        audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 30, audioPlayer.duration);
+        console.log('⏩ Forward 30s');
+    }
 }
 
 function prevSong() {
-    audioPlayer.currentTime -= 30;
+    audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 30, 0);
+    console.log('⏪ Backward 30s');
 }
 
 // ===== PROGRESS BAR =====
@@ -74,6 +81,8 @@ function setProgress(e) {
 }
 
 function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    
     const hours = Math.floor(seconds / 3600);
     const mins = Math.floor((seconds % 3600) / 60);
     const secs = Math.floor(seconds % 60);
@@ -89,15 +98,24 @@ function formatTime(seconds) {
 document.addEventListener('DOMContentLoaded', () => {
     initPlayer();
     
+    // Button event listeners
     playBtn.addEventListener('click', togglePlay);
     document.getElementById('btnNext').addEventListener('click', nextSong);
     document.getElementById('btnPrev').addEventListener('click', prevSong);
     
+    document.getElementById('btnShuffle').addEventListener('click', function() {
+        isShuffle = !isShuffle;
+        this.style.color = isShuffle ? '#E74C3C' : '#ffffff';
+        console.log(' Shuffle:', isShuffle);
+    });
+    
     document.getElementById('btnRepeat').addEventListener('click', function() {
         isRepeat = !isRepeat;
         this.style.color = isRepeat ? '#E74C3C' : '#ffffff';
+        console.log('🔁 Repeat:', isRepeat);
     });
     
+    // Audio events
     audioPlayer.addEventListener('timeupdate', updateProgress);
     
     audioPlayer.addEventListener('play', () => {
@@ -110,7 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePlayButton();
     });
     
+    audioPlayer.addEventListener('loadedmetadata', () => {
+        console.log('📀 Audio loaded - Duration:', formatTime(audioPlayer.duration));
+        durationDisplay.textContent = formatTime(audioPlayer.duration);
+    });
+    
     audioPlayer.addEventListener('ended', () => {
+        console.log('⏹️ Ended');
         if (isRepeat) {
             audioPlayer.currentTime = 0;
             audioPlayer.play();
@@ -120,16 +144,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    audioPlayer.addEventListener('loadedmetadata', () => {
-        durationDisplay.textContent = formatTime(audioPlayer.duration);
+    audioPlayer.addEventListener('error', (e) => {
+        console.error('❌ Audio Error:', e);
+        alert('Audio file load nahi ho rahi! File name ya path check karo.');
     });
     
     progressBar.addEventListener('input', setProgress);
+    
+    console.log('✅ DOM Loaded - Player Ready');
 });
 
 // ===== ONLINE COUNT =====
 function simulateOnlineCount() {
-    const count = 52 + Math.floor(Math.random() * 15);
+    const count = 61 + Math.floor(Math.random() * 15);
     document.getElementById('onlineCount').textContent = count;
     document.getElementById('statOnline').textContent = count;
 }
@@ -151,16 +178,18 @@ updateTime();
 // Keyboard Shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
+    
     if (e.code === 'Space') { 
         e.preventDefault(); 
         togglePlay(); 
     }
     if (e.code === 'ArrowRight') {
-        audioPlayer.currentTime += 30;
+        nextSong();
     }
     if (e.code === 'ArrowLeft') {
-        audioPlayer.currentTime -= 30;
+        prevSong();
     }
 });
 
-console.log('🚌 Bus Wali Playlist Loaded - Single File Player Ready!');
+console.log('🚌 Bus Wali Playlist Loaded - 67 Songs Ready!');
+console.log('🎵 Use Space to Play/Pause, Arrows to Skip');
